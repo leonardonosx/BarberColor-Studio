@@ -24,7 +24,11 @@ export const MODULES_DATA: ModuleContent[] = [
           {
             label: 'Colores Primarios',
             detail: 'Amarillo, Azul y Rojo. Son colores puros que no se obtienen mezclando otros pigmentos.',
-            highlight: 'gold'
+            highlight: 'gold',
+            visualKey: 'primary-colors',
+            extendedDetail: 'En colorimetría capilar, todo tinte natural o fantasía parte de la combinación equilibrada de estos tres pigmentos fundamentales. El azul aporta profundidad y frío; el rojo aporta calidez e intensidad; el amarillo aporta luminosidad.',
+            salonTip: 'Prueba combinar dos primarios en el Simulador de Color para observar cómo nace cada tono secundario.',
+            simulatorLink: 'sim-color'
           },
           {
             label: 'Colores Secundarios',
@@ -68,7 +72,11 @@ export const MODULES_DATA: ModuleContent[] = [
           {
             label: 'Complementaria',
             detail: 'Colores opuestos en el círculo (ej. Amarillo vs. Violeta). En colorimetría capilar se usan para neutralizar reflejos indeseados.',
-            highlight: 'gold'
+            highlight: 'gold',
+            visualKey: 'complementary',
+            extendedDetail: 'Al mezclar dos colores complementarios en partes iguales se cancelan entre sí, generando un tono neutro (marrón/beige/cenizo) ideal para corregir reflejos naranjas o amarillos tras una decoloración.',
+            salonTip: 'Identifica primero el fondo de aclaración (ej. amarillo en altura 9) antes de elegir el matizante opuesto.',
+            simulatorLink: 'sim-color'
           },
           {
             label: 'Análoga y Monocromática',
@@ -83,7 +91,11 @@ export const MODULES_DATA: ModuleContent[] = [
           {
             label: 'Regla 60-30-10',
             detail: '60% color dominante (base), 30% color secundario (transición/medios) y 10% color de acento (mechas o detalles focales).',
-            highlight: 'emerald'
+            highlight: 'emerald',
+            visualKey: 'rule-60-30-10',
+            extendedDetail: 'Esta proporción clásica del diseño garantiza armonía visual en trabajos de balayage, mechas o color global: el 60% da estructura y naturalidad en raíces y base; el 30% suaviza el degradado en medios; y el 10% crea puntos de luz estratégicos.',
+            salonTip: 'Abre el Probador de Regla 60-30-10 en el Simulador de Color para experimentar con tus propias paletas.',
+            simulatorLink: 'sim-color'
           }
         ]
       },
@@ -272,7 +284,10 @@ export const MODULES_DATA: ModuleContent[] = [
           {
             label: 'Porosidad (Prueba del Vaso / Tacto)',
             detail: 'Capacidad de absorción: Baja (flota, cutícula muy cerrada), Media (equilibrada), Alta (se hunde rápido, cutícula dañada).',
-            highlight: 'amber'
+            highlight: 'amber',
+            visualKey: 'porosity',
+            extendedDetail: 'La porosidad determina qué tan rápido entra y sale el pigmento o la hidratación. En porosidad alta, el tinte puede absorberse de golpe y oscurecerse en puntas; en porosidad baja, requiere mayor tiempo o calor suave.',
+            salonTip: 'Desliza dos dedos desde la punta hacia la raíz sobre una hebra seca para sentir si las escamas están levantadas.'
           },
           {
             label: 'Elasticidad',
@@ -440,7 +455,10 @@ export const MODULES_DATA: ModuleContent[] = [
           {
             label: 'Degradado Fluido (Fade)',
             detail: 'Transición continua sin líneas marcadas mediante juego de palanca (0.0 a 0.5) y peines guía (#0.5 al #4) con movimiento en cuchara (C-motion).',
-            highlight: 'gold'
+            highlight: 'gold',
+            extendedDetail: 'El secreto de un fade limpio radica en respetar el grosor de cada franja guía y trabajar la línea divisoria con la esquina de la cuchilla abriendo y cerrando la palanca progresivamente.',
+            salonTip: 'Practica el borrado de líneas entre el peine #1 y el #2 en el Simulador de Corte 2D.',
+            simulatorLink: 'sim-barber'
           },
           {
             label: 'Corte a Tijera y Hair Tattoo',

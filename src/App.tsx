@@ -343,6 +343,7 @@ export function App() {
               isCompleted={progress.completedModules.includes(activeModule.id)}
               onToggleComplete={toggleModuleComplete}
               onGoToExam={(id) => goToExam(id)}
+              onNavigateSimulator={(sim) => navigateTo(sim)}
               onNextModule={
                 activeModuleIndex < MODULES_DATA.length - 1
                   ? () => navigateTo(MODULES_DATA[activeModuleIndex + 1].id)

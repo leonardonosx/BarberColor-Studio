@@ -1,7 +1,8 @@
-import React from 'react';
-import { CheckCircle2, BookOpen, Award, ArrowRight } from 'lucide-react';
-import { ModuleContent, ModuleId } from '../types';
+import React, { useState } from 'react';
+import { CheckCircle2, BookOpen, Award, ArrowRight, Eye, X, Sparkles, Palette, Scissors } from 'lucide-react';
+import { ConceptPoint, ModuleContent, ModuleId, NavSection } from '../types';
 import { ModuleDiagrams } from './ModuleDiagrams';
+import { ConceptVisuals } from './ConceptVisuals';
 
 interface ModuleViewerProps {
   module: ModuleContent;
@@ -9,6 +10,7 @@ interface ModuleViewerProps {
   onToggleComplete: (id: ModuleId) => void;
   onGoToExam: (id: ModuleId) => void;
   onNextModule?: () => void;
+  onNavigateSimulator?: (sim: Extract<NavSection, 'sim-color' | 'sim-barber'>) => void;
 }
 
 export const ModuleViewer: React.FC<ModuleViewerProps> = ({
@@ -17,7 +19,10 @@ export const ModuleViewer: React.FC<ModuleViewerProps> = ({
   onToggleComplete,
   onGoToExam,
   onNextModule,
+  onNavigateSimulator,
 }) => {
+  const [activePoint, setActivePoint] = useState<ConceptPoint | null>(null);
+
   return (
     <div className="space-y-6 pb-8">
       {/* Encabezado Editorial del Módulo */}
@@ -87,6 +92,14 @@ export const ModuleViewer: React.FC<ModuleViewerProps> = ({
       {/* Diagrama Visual Interactivo del Módulo */}
       <ModuleDiagrams moduleId={module.id} />
 
+      {/* Nota de interactividad */}
+      <div className="flex items-center gap-2 text-xs text-amber-300/90 bg-amber-500/10 border border-amber-500/20 rounded-xl px-4 py-2.5">
+        <Eye className="w-4 h-4 shrink-0" />
+        <span>
+          <strong>Modo Interactivo:</strong> Haz clic en cualquier concepto de las fichas para abrir su explicación ampliada, consejo de salón e imagen de apoyo.
+        </span>
+      </div>
+
       {/* Tarjetas Claras de Lectura (Alto Contraste) */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
         {module.cards.map((card, idx) => (
@@ -119,18 +132,26 @@ export const ModuleViewer: React.FC<ModuleViewerProps> = ({
                       ? 'bg-orange-600'
                       : 'bg-amber-600';
                   return (
-                    <div
+                    <button
+                      type="button"
                       key={pIdx}
-                      className="rounded-xl bg-white border border-slate-200 p-3 shadow-xs"
+                      onClick={() => setActivePoint(pt)}
+                      className="w-full text-left group rounded-xl bg-white hover:bg-amber-50/70 border border-slate-200 hover:border-amber-500 p-3 shadow-xs transition cursor-pointer"
                     >
-                      <div className="flex items-center gap-2 mb-1">
-                        <span className={`w-2 h-2 rounded-full ${dotColor}`} />
-                        <span className="text-xs sm:text-sm font-bold text-slate-900">
-                          {pt.label}
+                      <div className="flex items-center justify-between gap-2 mb-1">
+                        <div className="flex items-center gap-2">
+                          <span className={`w-2 h-2 rounded-full ${dotColor}`} />
+                          <span className="text-xs sm:text-sm font-bold text-slate-900 group-hover:text-amber-800 transition">
+                            {pt.label}
+                          </span>
+                        </div>
+                        <span className="inline-flex items-center gap-1 text-[10px] font-bold uppercase tracking-wider text-amber-700 bg-amber-100/80 px-2 py-0.5 rounded-full shrink-0">
+                          <Eye className="w-3 h-3" />
+                          Ver apoyo
                         </span>
                       </div>
                       <p className="text-xs text-slate-700 leading-relaxed pl-4">{pt.detail}</p>
-                    </div>
+                    </button>
                   );
                 })}
               </div>
@@ -197,6 +218,103 @@ export const ModuleViewer: React.FC<ModuleViewerProps> = ({
           </button>
         )}
       </div>
+
+      {/* MODAL INTERACTIVO DE CONCEPTO E IMAGEN DE APOYO */}
+      {activePoint && (
+        <div
+          className="fixed inset-0 z-50 bg-black/75 backdrop-blur-sm flex items-center justify-center p-4"
+          onClick={() => setActivePoint(null)}
+        >
+          <div
+            className="bg-[#12141C] border border-amber-500/35 rounded-3xl max-w-xl w-full p-5 sm:p-6 shadow-2xl space-y-4 max-h-[90vh] overflow-y-auto"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex items-start justify-between gap-3">
+              <div>
+                <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-amber-400 block">
+                  Módulo {module.number} • Concepto Interactivo
+                </span>
+                <h3 className="font-display text-xl sm:text-2xl font-bold text-white mt-0.5">
+                  {activePoint.label}
+                </h3>
+              </div>
+              <button
+                type="button"
+                onClick={() => setActivePoint(null)}
+                className="p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 cursor-pointer"
+                aria-label="Cerrar detalle"
+              >
+                <X className="w-4 h-4" />
+              </button>
+            </div>
+
+            <p className="text-sm text-slate-200 leading-relaxed">{activePoint.detail}</p>
+
+            {activePoint.extendedDetail && (
+              <div className="bg-slate-900/90 border border-slate-800 rounded-xl p-3.5 text-xs sm:text-sm text-slate-300 leading-relaxed">
+                {activePoint.extendedDetail}
+              </div>
+            )}
+
+            {/* Apoyo visual interactivo */}
+            <ConceptVisuals visualKey={activePoint.visualKey} label={activePoint.label} />
+
+            {/* Imagen de referencia del módulo si no hay visual específico */}
+            {!activePoint.visualKey && (
+              <div className="rounded-xl overflow-hidden border border-slate-800 aspect-[16/8]">
+                <img
+                  src={module.imageUrl}
+                  alt={activePoint.label}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            )}
+
+            {activePoint.salonTip && (
+              <div className="flex items-start gap-2.5 bg-amber-500/10 border border-amber-500/25 rounded-xl p-3 text-xs text-amber-200">
+                <Sparkles className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
+                <div>
+                  <strong className="text-amber-300">Consejo de Salón: </strong>
+                  {activePoint.salonTip}
+                </div>
+              </div>
+            )}
+
+            <div className="flex flex-wrap items-center justify-end gap-2 pt-2">
+              {activePoint.simulatorLink && onNavigateSimulator && (
+                <button
+                  type="button"
+                  onClick={() => {
+                    const target = activePoint.simulatorLink!;
+                    setActivePoint(null);
+                    onNavigateSimulator(target);
+                  }}
+                  className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-xs cursor-pointer transition"
+                >
+                  {activePoint.simulatorLink === 'sim-color' ? (
+                    <>
+                      <Palette className="w-4 h-4" />
+                      Probar en Simulador de Color
+                    </>
+                  ) : (
+                    <>
+                      <Scissors className="w-4 h-4" />
+                      Practicar en Simulador de Corte
+                    </>
+                  )}
+                </button>
+              )}
+              <button
+                type="button"
+                onClick={() => setActivePoint(null)}
+                className="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold text-xs cursor-pointer transition"
+              >
+                Cerrar
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

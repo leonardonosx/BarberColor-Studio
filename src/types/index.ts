@@ -42,15 +42,21 @@ export interface UserProgress {
   studentName: string;
 }
 
+export interface ConceptPoint {
+  label: string;
+  detail: string;
+  highlight?: 'gold' | 'emerald' | 'rose' | 'sky' | 'amber';
+  extendedDetail?: string;
+  salonTip?: string;
+  visualKey?: string;
+  simulatorLink?: 'sim-color' | 'sim-barber';
+}
+
 export interface ModuleSectionCard {
   title: string;
   badge?: string;
   summary: string;
-  points: {
-    label: string;
-    detail: string;
-    highlight?: 'gold' | 'emerald' | 'rose' | 'sky' | 'amber';
-  }[];
+  points: ConceptPoint[];
 }
 
 export interface ModuleContent {
