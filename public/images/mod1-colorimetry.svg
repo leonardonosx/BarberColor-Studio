@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420" fill="none">
+  <defs>
+    <radialGradient id="cbg" cx="40%" cy="40%" r="75%">
+      <stop offset="0%" stop-color="#241C16"/>
+      <stop offset="100%" stop-color="#0B0C10"/>
+    </radialGradient>
+    <linearGradient id="gold1" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FDE68A"/>
+      <stop offset="100%" stop-color="#B45309"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="420" fill="url(#cbg)"/>
+  <!-- Glossy Hair Color Swatches Fan -->
+  <g transform="translate(110, 60)">
+    <path d="M60 280 C35 180 40 70 90 25 C120 70 125 180 100 280 Z" fill="#FDE047" opacity="0.9"/>
+    <path d="M130 285 C110 180 120 65 170 20 C200 70 200 180 175 285 Z" fill="#F59E0B" opacity="0.9"/>
+    <path d="M200 290 C185 185 198 65 248 25 C275 75 275 185 245 290 Z" fill="#EA580C" opacity="0.9"/>
+    <path d="M270 290 C260 185 275 70 325 32 C348 80 345 190 315 290 Z" fill="#991B1B" opacity="0.92"/>
+    <path d="M340 285 C335 185 350 75 398 42 C418 90 412 195 382 285 Z" fill="#451A03" opacity="0.95"/>
+    <!-- Highlight sheen -->
+    <path d="M85 60 Q75 150 82 240" stroke="#FFFFFF" stroke-opacity="0.35" stroke-width="5" stroke-linecap="round"/>
+    <path d="M165 55 Q155 150 160 245" stroke="#FFFFFF" stroke-opacity="0.3" stroke-width="5" stroke-linecap="round"/>
+    <path d="M242 60 Q232 155 236 250" stroke="#FFFFFF" stroke-opacity="0.25" stroke-width="5" stroke-linecap="round"/>
+  </g>
+  <!-- Matte Black Color Bowl & Gold Brush -->
+  <path d="M510 250 C510 315 670 315 670 250 Z" fill="#181A22" stroke="url(#gold1)" stroke-width="2.5"/>
+  <ellipse cx="590" cy="250" rx="80" ry="18" fill="#272A36" stroke="url(#gold1)" stroke-width="2"/>
+  <ellipse cx="590" cy="250" rx="64" ry="12" fill="#D97706" opacity="0.75"/>
+  <!-- Gold Tint Brush -->
+  <rect x="615" y="135" width="12" height="125" rx="6" transform="rotate(24 615 135)" fill="url(#gold1)"/>
+  <path d="M545 235 L580 252 L570 272 L535 255 Z" fill="#FDE68A" opacity="0.85"/>
+</svg>

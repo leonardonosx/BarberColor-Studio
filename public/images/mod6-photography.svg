@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420" fill="none">
+  <defs>
+    <radialGradient id="pbg" cx="50%" cy="45%" r="75%">
+      <stop offset="0%" stop-color="#20222E"/>
+      <stop offset="100%" stop-color="#090A0F"/>
+    </radialGradient>
+  </defs>
+  <rect width="800" height="420" fill="url(#pbg)"/>
+  <!-- Ring Light -->
+  <circle cx="240" cy="200" r="85" stroke="#FDE68A" stroke-width="10" stroke-opacity="0.85"/>
+  <circle cx="240" cy="200" r="96" stroke="#F59E0B" stroke-width="1.5" stroke-opacity="0.35"/>
+  <line x1="240" y1="285" x2="240" y2="410" stroke="#475569" stroke-width="6"/>
+  <!-- Camera Frame / Portfolio Card -->
+  <rect x="405" y="75" width="275" height="270" rx="18" fill="#13161F" stroke="#D4AF37" stroke-width="2"/>
+  <path d="M430 115 L430 95 L450 95 M635 95 L655 95 L655 115 M430 305 L430 325 L450 325 M635 325 L655 325 L655 305" stroke="#FDE68A" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- Model 3/4 Silhouette -->
+  <circle cx="542" cy="175" r="38" fill="#2A3040" stroke="#E8C97A" stroke-width="1.5"/>
+  <path d="M475 310 C482 250 510 232 542 232 C574 232 602 250 610 310 Z" fill="#2A3040" stroke="#E8C97A" stroke-width="1.5"/>
+</svg>

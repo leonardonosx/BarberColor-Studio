@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420" fill="none">
+  <defs>
+    <radialGradient id="trbg" cx="50%" cy="45%" r="70%">
+      <stop offset="0%" stop-color="#1E202B"/>
+      <stop offset="100%" stop-color="#090A0F"/>
+    </radialGradient>
+  </defs>
+  <rect width="800" height="420" fill="url(#trbg)"/>
+  <!-- Diagnostic Magnifying Ring -->
+  <circle cx="380" cy="205" r="135" fill="#13161F" stroke="#D4AF37" stroke-width="3"/>
+  <circle cx="380" cy="205" r="120" fill="#181C28" stroke="#34D399" stroke-opacity="0.45" stroke-width="1.5" stroke-dasharray="6 6"/>
+  <!-- Curl Patterns Inside Lens -->
+  <path d="M310 135 L310 275" stroke="#38BDF8" stroke-width="4" stroke-linecap="round"/>
+  <path d="M355 135 Q372 170 355 205 Q338 240 355 275" stroke="#34D399" stroke-width="4" stroke-linecap="round"/>
+  <path d="M405 135 C425 150 385 170 405 188 C425 206 385 226 405 244 C425 260 390 270 405 275" stroke="#FBBF24" stroke-width="4" stroke-linecap="round"/>
+  <path d="M452 135 L464 150 L440 165 L464 180 L440 195 L464 210 L440 225 L464 240 L440 255 L455 275" stroke="#FB923C" stroke-width="3.5" stroke-linecap="round"/>
+  <!-- Handle -->
+  <rect x="478" y="295" width="22" height="105" rx="11" transform="rotate(-42 478 295)" fill="#D4AF37"/>
+  <!-- Traffic Light Indicators -->
+  <circle cx="640" cy="145" r="18" fill="#10B981" fill-opacity="0.85"/>
+  <circle cx="640" cy="205" r="18" fill="#F59E0B" fill-opacity="0.85"/>
+  <circle cx="640" cy="265" r="18" fill="#EF4444" fill-opacity="0.85"/>
+</svg>

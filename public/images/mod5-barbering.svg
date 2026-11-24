@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420" fill="none">
+  <defs>
+    <radialGradient id="bbg" cx="50%" cy="45%" r="75%">
+      <stop offset="0%" stop-color="#221E18"/>
+      <stop offset="100%" stop-color="#090A0E"/>
+    </radialGradient>
+    <linearGradient id="fadeGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#11131A"/>
+      <stop offset="55%" stop-color="#333847"/>
+      <stop offset="100%" stop-color="#D9A782"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="420" fill="url(#bbg)"/>
+  <!-- Fade Gradient Silhouette -->
+  <rect x="140" y="75" width="210" height="270" rx="105" fill="url(#fadeGrad)" stroke="#D4AF37" stroke-width="2"/>
+  <!-- Matte Black & Gold Clipper -->
+  <g transform="translate(460, 95) rotate(16)">
+    <rect x="0" y="24" width="76" height="190" rx="18" fill="#171923" stroke="#D4AF37" stroke-width="2.5"/>
+    <rect x="10" y="0" width="56" height="28" rx="4" fill="#CBD5E1"/>
+    <rect x="24" y="65" width="28" height="75" rx="8" fill="#D4AF37" fill-opacity="0.85"/>
+    <circle cx="38" cy="175" r="9" fill="#D4AF37"/>
+  </g>
+  <!-- Straight Razor Accent -->
+  <path d="M565 290 L690 215" stroke="#E2E8F0" stroke-width="7" stroke-linecap="round"/>
+  <path d="M565 290 L675 330" stroke="#D4AF37" stroke-width="9" stroke-linecap="round"/>
+</svg>
