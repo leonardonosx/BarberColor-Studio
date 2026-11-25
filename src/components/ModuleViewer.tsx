@@ -3,6 +3,7 @@ import { CheckCircle2, BookOpen, Award, ArrowRight, Eye, X, Sparkles, Palette, S
 import { ConceptPoint, ModuleContent, ModuleId, NavSection } from '../types';
 import { ModuleDiagrams } from './ModuleDiagrams';
 import { ConceptVisuals } from './ConceptVisuals';
+import { LevelColorTable } from './LevelColorTable';
 
 interface ModuleViewerProps {
   module: ModuleContent;
@@ -160,8 +161,13 @@ export const ModuleViewer: React.FC<ModuleViewerProps> = ({
         ))}
       </div>
 
-      {/* Tabla Técnica (si el módulo incluye tabla) */}
-      {module.tableTitle && module.tableHeaders && module.tableRows && (
+      {/* Tabla Técnica (Interactiva en Módulo 1, Estándar en otros módulos) */}
+      {module.id === 'mod-1' ? (
+        <LevelColorTable />
+      ) : (
+        module.tableTitle &&
+        module.tableHeaders &&
+        module.tableRows && (
         <div className="bg-slate-900/90 border border-slate-800 rounded-2xl p-5 overflow-hidden">
           <h3 className="text-sm font-bold uppercase tracking-wider text-amber-400 mb-3">
             {module.tableTitle}
@@ -196,7 +202,7 @@ export const ModuleViewer: React.FC<ModuleViewerProps> = ({
             </table>
           </div>
         </div>
-      )}
+      ))}
 
       {/* Barra de Acción Inferior */}
       <div className="flex flex-wrap items-center justify-between gap-3 bg-slate-900/80 border border-slate-800 rounded-2xl p-4">
