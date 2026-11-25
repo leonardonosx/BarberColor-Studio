@@ -11,6 +11,7 @@ export type NavSection =
   | ModuleId
   | 'sim-color'
   | 'sim-barber'
+  | 'diagnostic'
   | 'exams'
   | 'certificate';
 

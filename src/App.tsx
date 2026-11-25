@@ -9,12 +9,14 @@ import {
   CheckCircle2,
   ChevronRight,
   Sparkles,
+  FileText,
 } from 'lucide-react';
 import { BrandLogo } from './components/BrandLogo';
 import { MODULES_DATA } from './data/modulesData';
 import { ModuleViewer } from './components/ModuleViewer';
 import { ColorSimulator } from './components/ColorSimulator';
 import { BarberSimulator } from './components/BarberSimulator';
+import { DiagnosticForm } from './components/DiagnosticForm';
 import { ExamEngine } from './components/ExamEngine';
 import { CertificateView } from './components/CertificateView';
 import { ExamResult, ModuleId, NavSection, UserProgress } from './types';
@@ -169,6 +171,17 @@ export function App() {
             <Scissors className="w-4 h-4" />
             Simulador de Corte
           </button>
+          <button
+            onClick={() => navigateTo('diagnostic')}
+            className={`w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs font-bold transition cursor-pointer ${
+              section === 'diagnostic'
+                ? 'bg-amber-500 text-slate-950'
+                : 'text-slate-300 hover:bg-slate-800/70'
+            }`}
+          >
+            <FileText className="w-4 h-4" />
+            Ficha de Diagnóstico
+          </button>
 
           <div className="pt-3 pb-1 px-3 text-[10px] font-bold uppercase tracking-wider text-slate-500">
             Evaluación y Diploma
@@ -199,15 +212,24 @@ export function App() {
       </aside>
 
       {/* ENCABEZADO COMPACTO MÓVIL / TABLET */}
-      <header className="no-print lg:hidden sticky top-0 z-30 bg-[#11141D]/95 backdrop-blur border-b border-slate-800 px-4 py-3 flex items-center justify-between">
+      <header className="no-print lg:hidden sticky top-0 z-30 bg-[#11141D]/95 backdrop-blur border-b border-slate-800 px-4 py-3 flex items-center justify-between gap-2">
         <BrandLogo variant="compact" />
-        <button
-          onClick={() => navigateTo('certificate')}
-          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-amber-500/15 border border-amber-500/30 text-amber-300 text-xs font-bold"
-        >
-          <Award className="w-3.5 h-3.5" />
-          Diploma
-        </button>
+        <div className="flex items-center gap-2">
+          <button
+            onClick={() => navigateTo('diagnostic')}
+            className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg bg-slate-800 border border-slate-700 text-slate-200 text-xs font-semibold"
+          >
+            <FileText className="w-3.5 h-3.5 text-amber-400" />
+            Ficha
+          </button>
+          <button
+            onClick={() => navigateTo('certificate')}
+            className="inline-flex items-center gap-1 px-2.5 py-1.5 rounded-lg bg-amber-500/15 border border-amber-500/30 text-amber-300 text-xs font-bold"
+          >
+            <Award className="w-3.5 h-3.5" />
+            Diploma
+          </button>
+        </div>
       </header>
 
       {/* CONTENIDO PRINCIPAL */}
@@ -256,6 +278,13 @@ export function App() {
                     >
                       <Scissors className="w-4 h-4 text-amber-400" />
                       Simulador de Corte
+                    </button>
+                    <button
+                      onClick={() => navigateTo('diagnostic')}
+                      className="inline-flex items-center gap-2 px-4 py-3 rounded-xl bg-[#141720]/90 backdrop-blur border border-amber-500/30 hover:border-amber-400 text-white font-semibold text-sm transition cursor-pointer"
+                    >
+                      <FileText className="w-4 h-4 text-amber-400" />
+                      Ficha de Diagnóstico
                     </button>
                   </div>
                 </div>
@@ -352,9 +381,10 @@ export function App() {
             />
           )}
 
-          {/* SIMULADORES */}
+          {/* SIMULADORES Y FICHA DE DIAGNÓSTICO */}
           {section === 'sim-color' && <ColorSimulator />}
           {section === 'sim-barber' && <BarberSimulator />}
+          {section === 'diagnostic' && <DiagnosticForm />}
 
           {/* EXÁMENES */}
           {section === 'exams' && (
